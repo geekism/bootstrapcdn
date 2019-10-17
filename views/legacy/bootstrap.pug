@@ -16,9 +16,9 @@ block content
                 .form-group.my-4
                     label.font-weight-bold(for=formId) Complete CSS
                     .input-group.input-group-lg
-                        input.form-control(id=formId, type='text', value=file)
+                        input.form-control(id=formId, type='text', readonly, value=file)
                         .input-group-append
-                            button.btn.btn-dark.dropdown-toggle(type='button', data-toggle='collapse', data-target=`#${name}`, aria-expanded='false', aria-controls=name)
+                            button.btn.btn-dark.dropdown-toggle(type='button', data-toggle='collapse', data-target=`#${name}`, aria-label='Toggle Dropdown', aria-expanded='false', aria-controls=name)
                     span.form-text.text-muted Click to copy
 
                 include ../_partials/csscode.pug
@@ -31,9 +31,9 @@ block content
                 .form-group.my-4
                     label.font-weight-bold(for=formId) Complete JavaScript
                     .input-group.input-group-lg
-                        input.form-control(id=formId, type='text', value=file)
+                        input.form-control(id=formId, type='text', readonly, value=file)
                         .input-group-append
-                            button.btn.btn-dark.dropdown-toggle(type='button', data-toggle='collapse', data-target=`#${name}`, aria-expanded='false', aria-controls=name)
+                            button.btn.btn-dark.dropdown-toggle(type='button', data-toggle='collapse', data-target=`#${name}`, aria-label='Toggle Dropdown', aria-expanded='false', aria-controls=name)
                     span.form-text.text-muted Click to copy
 
                 include ../_partials/jscode.pug
@@ -47,9 +47,9 @@ block content
                     .form-group.my-4
                         label.font-weight-bold(for=formId) Complete JavaScript Bundle
                         .input-group.input-group-lg
-                            input.form-control(id=formId, type='text', value=file)
+                            input.form-control(id=formId, type='text', readonly, value=file)
                             .input-group-append
-                                button.btn.btn-dark.dropdown-toggle(type='button', data-toggle='collapse', data-target=`#${name}`, aria-expanded='false', aria-controls=name)
+                                button.btn.btn-dark.dropdown-toggle(type='button', data-toggle='collapse', data-target=`#${name}`, aria-label='Toggle Dropdown', aria-expanded='false', aria-controls=name)
                         span.form-text.text-muted Click to copy
 
                     include ../_partials/jscode.pug

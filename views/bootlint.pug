@@ -4,17 +4,18 @@ block content
     h2.text-center.mb-4 Bootlint
 
     .card.bg-light.mt-4.p-4.text-center
-        -var name   = 'bootlintjs';
-        -var file   = config.files.bootlint[0].javascript;
-        -var sri    = config.files.bootlint[0].javascriptSri;
-        -var formId = `${name}_form`;
+        -var name    = 'bootlintjs';
+        -var current = config.files.bootlint.find(file => file.current);
+        -var file    = current.javascript;
+        -var sri     = current.javascriptSri;
+        -var formId  = `${name}_form`;
 
         .form-group.my-4
             label.font-weight-bold(for=formId) Complete JavaScript
             .input-group.input-group-lg
-                input.form-control(id=formId, type='text', value=file)
+                input.form-control(id=formId, type='text', readonly, value=file)
                 .input-group-append
-                    button.btn.btn-dark.dropdown-toggle(type='button', data-toggle='collapse', data-target=`#${name}`, aria-expanded='false', aria-controls=name)
+                    button.btn.btn-dark.dropdown-toggle(type='button', data-toggle='collapse', data-target=`#${name}`, aria-label='Toggle Dropdown', aria-expanded='false', aria-controls=name)
             span.form-text.text-muted Click to copy
 
         include _partials/jscode.pug

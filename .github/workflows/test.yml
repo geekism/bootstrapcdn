@@ -1,5 +1,7 @@
 name: Tests
 on: [push, pull_request]
+env:
+  CI: true
 
 jobs:
   test:
@@ -21,15 +23,11 @@ jobs:
 
       - name: Install npm dependencies
         run: npm ci
-        env:
-          CI: true
 
       - name: Run tests with coverage
         run: npm run nyc -- npm run mocha:no-functional
 
       - name: Run Coveralls
-        run: npm run coveralls
-        if: github.repository == 'MaxCDN/bootstrapcdn' && github.event_name == 'push'
-        env:
-          COVERALLS_REPO_TOKEN: "${{ secrets.COVERALLS_REPO_TOKEN }}"
-          COVERALLS_GIT_BRANCH: "${{ github.ref }}"
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
