@@ -30,7 +30,6 @@ const errorHandler = require('errorhandler');
 const enforce      = require('express-sslify');
 const sitemap      = require('express-sitemap');
 const helmet       = require('helmet');
-const Rollbar      = require('rollbar');
 const staticify    = require('staticify')(PUBLIC_DIR, {
     sendOptions: STATIC_OPTS
 });
@@ -49,28 +48,6 @@ app.set('etag', false);
 app.set('json escape', true);
 app.set('json spaces', 2);
 app.set('x-powered-by', false);
-
-// Enable rollbar early on the middleware stack, if it's configured.
-/* istanbul ignore if */
-if (ENV.ROLLBAR_ACCESS_TOKEN) {
-    const rollbarOptions = {
-        accessToken: ENV.ROLLBAR_ACCESS_TOKEN,
-        environment: NODE_ENV,
-        captureUncaught: true,
-        captureUnhandledRejections: true
-    };
-
-    // Heroku sets this by default, so using it if present.
-    if (ENV.ROLLBAR_ENDPOINT) {
-        rollbarOptions.endpoint = ENV.ROLLBAR_ENDPOINT;
-    }
-
-    const rollbar = new Rollbar(rollbarOptions);
-
-    app.use(rollbar.errorHandler());
-} else if (NODE_ENV !== 'test') {
-    console.log('WARNING: starting without rollbar');
-}
 
 /* istanbul ignore if */
 if (NODE_ENV === 'production') {
@@ -109,9 +86,7 @@ app.use((req, res, next) => {
     req.config = config;
 
     // custom headers
-    res.setHeader('Accept-Ranges', 'bytes');
-    res.setHeader('Cache-Control', 'public, max-age=0');
-    res.setHeader('Last-Modified', new Date().toUTCString());
+    res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
     res.setHeader('X-Hello-Human', 'Say hello back! @getBootstrapCDN on Twitter');
     res.setHeader('X-Powered-By', 'StackPath');
 
