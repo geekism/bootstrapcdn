@@ -112,3 +112,6 @@ Support this project by becoming a sponsor. Your logo will show up here with a l
 [![](https://opencollective.com/getbootstrapcdn/sponsor/7/avatar.svg)](https://opencollective.com/getbootstrapcdn/sponsor/7/website)
 [![](https://opencollective.com/getbootstrapcdn/sponsor/8/avatar.svg)](https://opencollective.com/getbootstrapcdn/sponsor/8/website)
 [![](https://opencollective.com/getbootstrapcdn/sponsor/9/avatar.svg)](https://opencollective.com/getbootstrapcdn/sponsor/9/website)
+
+View Demo
+[![](https://www.bootstrapcdn.com/bootswatch/favicon.ico)](https://www.bootstrapcdn.com/bootswatch/)
